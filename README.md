@@ -25,6 +25,11 @@ Hệ thống cho phép:
 > - **Kịch bản 1**: Giám sát và phát hiện tấn công Phishing HTA qua Splunk & OpenCTI.
 > - **Kịch bản 2**: Giám sát và phát hiện tấn công dò đoán mật khẩu mạng (SMB Brute Force).
 > - **Kịch bản 3**: Phát hiện Ransomware theo hành vi (Behavioral Detection) và ứng phó bằng OpenCTI.
+
+---
+
+## 🏗️ Kiến trúc Môi trường Lab (System Architecture)
+
  +-------------------------------------------------------------+
    |                  Threat Intelligence Server                 |
    |                Ubuntu Linux (OpenCTI Platform)              |
@@ -57,7 +62,7 @@ Hệ thống cho phép:
    |                Kali Linux (192.168.254.144)                 |
    |     - Python HTTP C2 Server | NetExec (SMB)                 |
    +-------------------------------------------------------------+
->   
+
 ---
 
 ## 🎯 3 Kịch bản Tấn công & Phát hiện Trọng tâm
@@ -132,7 +137,3 @@ Hệ thống cho phép:
 ## 📂 Tài liệu Tham khảo Chi tiết
 * Toàn bộ báo cáo nghiên cứu lý thuyết, hình ảnh cấu hình từng bước và nhật ký thực nghiệm chi tiết 78 trang được lưu trữ trong tệp:  
   👉 **`[Bao_Cao_BTL_Giam_Sat_ATTT_OpenCTI_Splunk.pdf](./Bao_Cao_BTL_Giam_Sat_ATTT_OpenCTI_Splunk.pdf)`**
-
----
-
-## 🏗️ Kiến trúc Môi trường Lab (System Architecture)
