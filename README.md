@@ -26,44 +26,30 @@ Hệ thống cho phép:
 > - **Kịch bản 2**: Giám sát và phát hiện tấn công dò đoán mật khẩu mạng (SMB Brute Force).
 > - **Kịch bản 3**: Phát hiện Ransomware theo hành vi (Behavioral Detection) và ứng phó bằng OpenCTI.
 
----
-
 ## 🏗️ Kiến trúc Môi trường Lab (System Architecture)
 
- +-------------------------------------------------------------+
-   |                  Threat Intelligence Server                 |
-   |                Ubuntu Linux (OpenCTI Platform)              |
-   |     - AlienVault OTX Connector                              |
-   |     - STIX 2.1 Knowledge Graph / Data Enrichment            |
-   +------------------------------+------------------------------+
-                                  |
-                 [Stream Connector / STIX 2.1]
-                                  v
-   +-------------------------------------------------------------+
-   |                         SIEM Server                         |
-   |                Ubuntu Linux (Splunk Enterprise)             |
-   |     - Port 9997 (Log Ingestion via Universal Forwarder)     |
-   |     - Correlation & SPL Real-time Detection Alerts          |
-   +------------------------------^------------------------------+
-                                  |
-                       [Port 9997 Forwarding]
-                                  |
-   +------------------------------+------------------------------+
-   |                         Victim Host                         |
-   |               Windows 10 x64 (192.168.254.152)              |
-   |     - Sysmon (Deep System / Process Monitoring)             |
-   |     - Splunk Universal Forwarder                            |
-   +------------------------------^------------------------------+
-                                  |
-                       [Simulated Attacks / C2]
-                                  |
-   +------------------------------+------------------------------+
-   |                        Attacker Host                        |
-   |                Kali Linux (192.168.254.144)                 |
-   |     - Python HTTP C2 Server | NetExec (SMB)                 |
-   +-------------------------------------------------------------+
+```mermaid
+graph TD
+    subgraph CTI_Server ["🧠 Threat Intelligence Server (Ubuntu Linux)"]
+        A["OpenCTI Platform<br/>- AlienVault OTX Connector<br/>- STIX 2.1 Knowledge Graph & Enrichment"]
+    end
 
----
+    subgraph SIEM_Server ["📊 SIEM Server (Ubuntu Linux)"]
+        B["Splunk Enterprise<br/>- Port 9997 Log Ingestion<br/>- Correlation & SPL Real-time Alerts"]
+    end
+
+    subgraph Victim_Host ["💻 Victim Endpoint (Windows 10 - 192.168.254.152)"]
+        C["Target System<br/>- Sysmon (Deep Process/Network Logging)<br/>- Splunk Universal Forwarder"]
+    end
+
+    subgraph Attacker_Host ["⚔️ Attacker Host (Kali Linux - 192.168.254.144)"]
+        D["Adversary Machine<br/>- Python HTTP C2 Server<br/>- NetExec SMB Brute Force"]
+    end
+
+    A -->|"1. Push STIX 2.1 Stream / IOCs"| B
+    D -->|"2. Attack Emulation (Phishing HTA, SMB, Ransomware)"| C
+    C -->|"3. Forward Event Logs (Port 9997)"| B
+```
 
 ## 🎯 3 Kịch bản Tấn công & Phát hiện Trọng tâm
 
