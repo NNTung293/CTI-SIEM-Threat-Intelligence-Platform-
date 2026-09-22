@@ -121,5 +121,4 @@ graph TD
 ---
 
 ## 📂 Tài liệu Tham khảo Chi tiết
-* Toàn bộ báo cáo nghiên cứu lý thuyết, hình ảnh cấu hình từng bước và nhật ký thực nghiệm chi tiết 78 trang được lưu trữ trong tệp:  
-  👉 **`[Bao_Cao_BTL_Giam_Sat_ATTT_OpenCTI_Splunk.pdf](./Bao_Cao_BTL_Giam_Sat_ATTT_OpenCTI_Splunk.pdf)`**
+* Toàn bộ báo cáo nghiên cứu lý thuyết, hình ảnh cấu hình từng bước và nhật ký thực nghiệm chi tiết 78 trang được lưu trữ trong tệp: **Bao_Cao_BTL_Giam_Sat_ATTT_OpenCTI_Splunk.pdf**
